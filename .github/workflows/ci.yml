@@ -45,11 +45,3 @@ jobs:
         run: |
           cd packages/frontend
           npm run test
-
-      - name: Coverage Report
-        uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          working-directory: "./packages/frontend"
-          test-command: "npm run test:coverage"
