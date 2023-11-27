@@ -5,7 +5,7 @@ export default {
   config(_input) {
     return {
       name: "golang-svelte-app",
-      region: "us-east-1",
+      region: "ap-northeast-1",
     };
   },
   stacks(app) {

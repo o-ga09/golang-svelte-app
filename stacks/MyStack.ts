@@ -1,30 +1,34 @@
-import { StackContext, Api, EventBus } from "sst/constructs";
+import { StackContext, Api, SvelteKitSite, Table } from "sst/constructs";
 
 export function API({ stack }: StackContext) {
-  const bus = new EventBus(stack, "bus", {
-    defaults: {
-      retries: 10,
+  const table = new Table(stack, "counter", {
+    fields: {
+      counter: "string",
     },
+    primaryIndex: {partitionKey: "counter"},
   });
 
   const api = new Api(stack, "api", {
     defaults: {
       function: {
-        bind: [bus],
+        bind: [table],
+        runtime: "go",
       },
     },
     routes: {
-      "GET /": "packages/functions/src/lambda.handler",
-      "GET /todo": "packages/functions/src/todo.list",
-      "POST /todo": "packages/functions/src/todo.create",
+      "GET /hello": "packages/functions/main.go",
     },
   });
 
-  bus.subscribe("todo.created", {
-    handler: "packages/functions/src/events/todo-created.handler",
+  const site = new SvelteKitSite(stack, "SvelteSite", {
+    path: "packages/frontend",
+    environment: {
+      PUBLIC_API_ENDPOINT: api.url,
+    },
   });
 
   stack.addOutputs({
+    SiteUrl: site.url,
     ApiEndpoint: api.url,
   });
 }
