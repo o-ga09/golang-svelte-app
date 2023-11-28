@@ -3,8 +3,9 @@ name: deploy
 on:
   push:
     paths:
-      - "packages/functions/*"
-      - "packages/frontend/*"
+      - "packages/functions/**.go"
+      - "packages/frontend/src/*.ts"
+      - "packages/frontend/src/*.tsx"
     branches:
       - main
 jobs:
