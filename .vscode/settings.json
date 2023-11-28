@@ -1,5 +1,8 @@
 {
   "search.exclude": {
     "**/.sst": true
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///Users/taichi/src/golang-svelte-app/.github/workflows/deploy.yml"
   }
 }
