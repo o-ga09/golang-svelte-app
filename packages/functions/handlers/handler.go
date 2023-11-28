@@ -9,6 +9,6 @@ import (
 func Handler(ctx context.Context) (events.APIGatewayProxyResponse, error){
 	return events.APIGatewayProxyResponse{
 		StatusCode: 200,
-		Body: "Hello World",
+		Body: "Hello World From GitHub Actions Deploy",
 	}, nil
 }
