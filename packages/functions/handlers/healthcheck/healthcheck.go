@@ -5,8 +5,6 @@ import (
 	"github.com/o-ga09/golang-svelte-app/handlers"
 )
 
-
-
 func main() {
-	lambda.Start(handlers.Handler)
+	lambda.Start(handlers.HealthCheck)
 }
