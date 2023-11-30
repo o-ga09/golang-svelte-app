@@ -30,8 +30,12 @@ func (c *Clicks) GetCount() (int, error) {
 }
 
 func (c *Clicks) UpdateCount() error {
-	newCount := Clicks{Counter: "clicks", Count: c.Count + 1}
-	err := c.repo.Put(newCount)
+	now, err  := c.GetCount()
+	if err != nil {
+		return err
+	}
+	newCount := Clicks{Counter: "clicks", Count: now + 1}
+	err = c.repo.Put(newCount)
 	if err != nil {
 		return err
 	}

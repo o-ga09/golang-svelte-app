@@ -55,6 +55,9 @@ func TestUpdateCount(t *testing.T) {
 				PutFunc: func(counter counter.Clicks) error {
 					return tt.err
 				},
+				GetFunc: func() (counter.Clicks, error) {
+					return counter.Clicks{Counter: "clicks",Count: 1}, tt.err
+				},
 			}
 			count := counter.New(repo)
 			err := count.UpdateCount()

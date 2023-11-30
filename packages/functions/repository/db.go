@@ -30,9 +30,9 @@ func connect() dynamo.Table {
 }
 
 func (r *Repository) Get() (counter.Clicks, error) {
-	res := counter.Clicks{}
+	res := &counter.Clicks{}
 	err := r.repo.Get("counter", "clicks").One(res)
-	return res, err
+	return *res, err
 }
 
 func (r *Repository) Put(counter counter.Clicks) error {
