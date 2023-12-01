@@ -4,8 +4,9 @@ on:
   push:
     paths:
       - "packages/functions/**.go"
-      - "packages/frontend/src/*.ts"
-      - "packages/frontend/src/*.tsx"
+      - "packages/frontend/src/**/*.ts"
+      - "packages/frontend/src/**/*.tsx"
+      - ".github/workflows/*.yml"
     branches:
       - main
 jobs:
