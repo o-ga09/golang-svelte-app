@@ -1,17 +1,17 @@
-<script>
-    import type { PageData } from './types';
-    import { getCount, updateCount } from '$lib';
+<script lang="ts">
+    import type { PageData } from './$types';
+    import { updateCount } from '$lib';
 
     export let data: PageData;
 
     const onClick = async () => {
         const cnt = await updateCount();
-        data.count = cnt.count;
+        data.Count = cnt.Count;
     };
 </script>
 
 <div class="App">
-    {#if data.count}<p>You Clicked me {data.count} times.</p>{/if}
+    {#if data.Count}<p>You Clicked me {data.Count} times.</p>{/if}
     <button on:click={onClick}>Click Me!</button>
 </div>
 
@@ -27,6 +27,3 @@
         font-size: 48px;
     }
 </style>
-
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>

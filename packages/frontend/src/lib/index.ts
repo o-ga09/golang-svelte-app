@@ -1,9 +1,9 @@
-import { PUBLIC_API_ENDPOINT } from "$env/static/public";
+// import {PUBLIC_API_ENDPOINT} from "$env/static/public";
 
-const endpoint = () => `${PUBLIC_API_ENDPOINT}/counter`
-
+// const endpoint = () => `${PUBLIC_API_ENDPOINT}/counter`
+const endpoint = () => "https://b4qocpsyq5.execute-api.ap-northeast-1.amazonaws.com/counter"
 type ResponseCount = {
-    count: number;
+    Count: number;
 };
 
 export const getCount = async (): Promise<ResponseCount> => {
