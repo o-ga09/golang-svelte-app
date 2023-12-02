@@ -1,7 +1,14 @@
 import { Table, Bucket, StackContext } from "sst/constructs";
 
 export function Storage({ stack}: StackContext) {
-    const Notes = new Table(stack, "notes", {
+  const table = new Table(stack, "counter", {
+    fields: {
+      counter: "string",
+    },
+    primaryIndex: {partitionKey: "counter"},
+  });  
+  
+  const Notes = new Table(stack, "notes", {
         fields: {
             userId: "string",
             noteId: "string",
@@ -28,6 +35,7 @@ export function Storage({ stack}: StackContext) {
       });
 
       return {
+        table,
         Notes,
         Users,
         bucket

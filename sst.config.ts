@@ -1,5 +1,4 @@
 import { SSTConfig } from "sst";
-import { API } from "./stacks/MyStack";
 import { NoteApi } from "./stacks/NoteApiStack";
 import { Storage } from "./stacks/StorageStack";
 import { Auth } from "./stacks/AuthStack";
@@ -14,7 +13,6 @@ export default {
   },
   stacks(app) {
     app.stack(Storage);
-    app.stack(API);
     app.stack(NoteApi);
     app.stack(Auth);
     app.stack(Frontend);
