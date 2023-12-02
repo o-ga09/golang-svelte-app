@@ -16,9 +16,9 @@ export function API({ stack }: StackContext) {
       },
     },
     routes: {
-      "GET /hello": "packages/functions/handlers/healthcheck/healthcheck.go",
-      "GET /counter": "packages/functions/handlers/getcount/getCount.go",
-      "POST /counter": "packages/functions/handlers/updatecount/updateCount.go",
+      "GET /hello": "packages/functions/cmd/healthcheck/healthcheck.go",
+      "GET /counter": "packages/functions/cmd/getcount/getCount.go",
+      "POST /counter": "packages/functions/cmd/updatecount/updateCount.go",
     },
   });
 }

@@ -15,11 +15,11 @@ export function NoteApi({ stack}: StackContext) {
           authorizer: "iam",
         },
         routes: {
-          "GET /notes": "packages/functions/handlers/getnotes/main.go",
-          "GET /notes/{id}": "packages/functions/handlers/getnotesbyid/main.go",
-          "POST /notes": "packages/functions/handlers/createnote/main.go",
-          "PUT /notes/{id}": "packages/functions/handlers/updatenote/main.go",
-          "DELETE /notes/{id}": "packages/functions/handlers/deletenote/main.go",
+          "GET /notes": "packages/functions/cmd/getnotes/main.go",
+          "GET /notes/{id}": "packages/functions/cmd/getnotesbyid/main.go",
+          "POST /notes": "packages/functions/cmd/createnote/main.go",
+          "PUT /notes/{id}": "packages/functions/cmd/updatenote/main.go",
+          "DELETE /notes/{id}": "packages/functions/cmd/deletenote/main.go",
         },
       });
 
