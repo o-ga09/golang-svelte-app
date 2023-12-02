@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/o-ga09/golang-svelte-app/handlers"
+	handlers "github.com/o-ga09/golang-svelte-app/handlers/counter"
 )
 
 func main() {

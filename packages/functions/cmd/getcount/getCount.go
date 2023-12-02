@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	handler := di.New()
+	handler := di.NewCounterHandler()
 	lambda.Start(handler.GetCouter)
 }

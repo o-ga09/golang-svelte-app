@@ -17,10 +17,10 @@ var _ Repository = &RepositoryMock{}
 //
 //		// make and configure a mocked Repository
 //		mockedRepository := &RepositoryMock{
-//			GetFunc: func() (Clicks, error) {
+//			GetFunc: func() (interface{}, error) {
 //				panic("mock out the Get method")
 //			},
-//			PutFunc: func(counter Clicks) error {
+//			PutFunc: func(counter interface{}) error {
 //				panic("mock out the Put method")
 //			},
 //		}
@@ -31,10 +31,10 @@ var _ Repository = &RepositoryMock{}
 //	}
 type RepositoryMock struct {
 	// GetFunc mocks the Get method.
-	GetFunc func() (Clicks, error)
+	GetFunc func() (interface{}, error)
 
 	// PutFunc mocks the Put method.
-	PutFunc func(counter Clicks) error
+	PutFunc func(counter interface{}) error
 
 	// calls tracks calls to the methods.
 	calls struct {
@@ -44,7 +44,7 @@ type RepositoryMock struct {
 		// Put holds details about calls to the Put method.
 		Put []struct {
 			// Counter is the counter argument value.
-			Counter Clicks
+			Counter interface{}
 		}
 	}
 	lockGet sync.RWMutex
@@ -52,7 +52,7 @@ type RepositoryMock struct {
 }
 
 // Get calls GetFunc.
-func (mock *RepositoryMock) Get() (Clicks, error) {
+func (mock *RepositoryMock) Get() (interface{}, error) {
 	if mock.GetFunc == nil {
 		panic("RepositoryMock.GetFunc: method is nil but Repository.Get was just called")
 	}
@@ -79,12 +79,12 @@ func (mock *RepositoryMock) GetCalls() []struct {
 }
 
 // Put calls PutFunc.
-func (mock *RepositoryMock) Put(counter Clicks) error {
+func (mock *RepositoryMock) Put(counter interface{}) error {
 	if mock.PutFunc == nil {
 		panic("RepositoryMock.PutFunc: method is nil but Repository.Put was just called")
 	}
 	callInfo := struct {
-		Counter Clicks
+		Counter interface{}
 	}{
 		Counter: counter,
 	}
@@ -99,10 +99,10 @@ func (mock *RepositoryMock) Put(counter Clicks) error {
 //
 //	len(mockedRepository.PutCalls())
 func (mock *RepositoryMock) PutCalls() []struct {
-	Counter Clicks
+	Counter interface{}
 } {
 	var calls []struct {
-		Counter Clicks
+		Counter interface{}
 	}
 	mock.lockPut.RLock()
 	calls = mock.calls.Put

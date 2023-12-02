@@ -6,7 +6,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/o-ga09/golang-svelte-app/counter"
-	"github.com/o-ga09/golang-svelte-app/handlers"
+	handlers "github.com/o-ga09/golang-svelte-app/handlers/counter"
 )
 
 func TestGetCounter(t *testing.T) {
@@ -22,7 +22,7 @@ func TestGetCounter(t *testing.T) {
 	for _, tt := range cases {
 		t.Run(tt.name, func(t *testing.T) {
 			repo := &counter.RepositoryMock{
-				GetFunc: func() (counter.Clicks, error) {
+				GetFunc: func() (interface{}, error) {
 					return counter.Clicks{Counter: "clicks", Count: 1}, tt.err
 				},
 			}
@@ -59,10 +59,10 @@ func TestUpdateCount(t *testing.T) {
 	for _, tt := range cases {
 		t.Run(tt.name, func(t *testing.T) {
 			repo := &counter.RepositoryMock{
-				GetFunc: func() (counter.Clicks, error) {
+				GetFunc: func() (interface{}, error) {
 					return counter.Clicks{Counter: "clicks", Count: 1}, tt.err
 				},
-				PutFunc: func(counter counter.Clicks) error {
+				PutFunc: func(interface{}) error {
 					return tt.err
 				},
 			}

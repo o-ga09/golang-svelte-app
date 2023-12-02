@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	handler := di.New()
-	lambda.Start(handler.UpdateCounter)
+	handler := di.NewNoteHandler()
+	lambda.Start(handler.Delete)
 }

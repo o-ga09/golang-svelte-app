@@ -2,8 +2,8 @@ package counter
 
 //go:generate moq -out repository_mock.go . Repository
 type Repository interface {
-	Get() (Clicks, error)
-	Put(counter Clicks) error
+	Get() (interface{}, error)
+	Put(counter interface{}) error
 }
 
 type ICounter interface {
@@ -26,7 +26,7 @@ func (c *Clicks) GetCount() (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	return res.Count, nil
+	return res.(Clicks).Count, nil
 }
 
 func (c *Clicks) UpdateCount() error {

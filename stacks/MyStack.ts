@@ -1,4 +1,4 @@
-import { StackContext, Api, SvelteKitSite, Table } from "sst/constructs";
+import { StackContext, Api, Table, Bucket } from "sst/constructs";
 
 export function API({ stack }: StackContext) {
   const table = new Table(stack, "counter", {
@@ -20,17 +20,5 @@ export function API({ stack }: StackContext) {
       "GET /counter": "packages/functions/handlers/getcount/getCount.go",
       "POST /counter": "packages/functions/handlers/updatecount/updateCount.go",
     },
-  });
-
-  const site = new SvelteKitSite(stack, "SvelteSite", {
-    path: "packages/frontend",
-    environment: {
-      PUBLIC_API_ENDPOINT: api.url,
-    },
-  });
-
-  stack.addOutputs({
-    SiteUrl: site.url,
-    ApiEndpoint: api.url,
   });
 }

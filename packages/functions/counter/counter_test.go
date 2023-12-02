@@ -21,7 +21,7 @@ func TestGetCount(t *testing.T) {
 	for _, tt := range cases {
 		t.Run(tt.name, func(t *testing.T) {
 			repo := &counter.RepositoryMock{
-				GetFunc: func() (counter.Clicks, error) {
+				GetFunc: func() (interface{}, error) {
 					return counter.Clicks{Counter: "clicks", Count: tt.want}, tt.err
 				},
 			}
@@ -52,10 +52,10 @@ func TestUpdateCount(t *testing.T) {
 	for _, tt := range cases {
 		t.Run(tt.name, func(t *testing.T) {
 			repo := &counter.RepositoryMock{
-				PutFunc: func(counter counter.Clicks) error {
+				PutFunc: func(interface{}) error {
 					return tt.err
 				},
-				GetFunc: func() (counter.Clicks, error) {
+				GetFunc: func() (interface{}, error) {
 					return counter.Clicks{Counter: "clicks",Count: 1}, tt.err
 				},
 			}
