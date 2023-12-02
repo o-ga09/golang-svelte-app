@@ -5,7 +5,7 @@ export function NoteApi({ stack}: StackContext) {
   const { Notes, Users } = use(Storage)
 
   const AUTH_SECRET_KEY = new Config.Secret(stack,"AUTH_SECRET_KEY")
-    const api = new Api(stack, "api", {
+    const noteapi = new Api(stack, "noteapi", {
         defaults: {
           function: {
             bind: [Notes,Users,AUTH_SECRET_KEY],
@@ -24,10 +24,10 @@ export function NoteApi({ stack}: StackContext) {
       });
 
       stack.addOutputs({
-        ApiEndpoint:api.url,
+        ApiEndpoint:noteapi.url,
       });
 
       return {
-        api
+        noteapi
       };
 }

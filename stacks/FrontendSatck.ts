@@ -4,14 +4,14 @@ import { Storage } from "./StorageStack";
 import { Auth } from "./AuthStack";
 
 export function Frontend({ stack,app }:StackContext) {
-  const { api } = use(NoteApi)
+  const { noteapi } = use(NoteApi)
   const { auth } = use(Auth)
   const { bucket } = use(Storage)
 
     const site = new SvelteKitSite(stack, "SvelteSite", {
         path: "packages/frontend",
         environment: {
-          PUBLIC_API_ENDPOINT: api.url,
+          PUBLIC_API_ENDPOINT: noteapi.url,
           PUBLIC_REGION: app.region,
           PUBLIC_BUCKET: bucket.bucketName,
           PUBLIC_USER_POOL_ID: auth.userPoolId,
@@ -22,6 +22,6 @@ export function Frontend({ stack,app }:StackContext) {
     
       stack.addOutputs({
         SiteUrl: site.url,
-        ApiEndpoint: api.url,
+        ApiEndpoint: noteapi.url,
       });
 }

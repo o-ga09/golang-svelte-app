@@ -4,7 +4,7 @@ import { Storage } from "./StorageStack";
 import * as iam from 'aws-cdk-lib/aws-iam';
 
 export function Auth({ stack, app }: StackContext) {
-    const { api } = use(NoteApi)
+    const { noteapi } = use(NoteApi)
     const { bucket } = use(Storage)
     
     const auth = new Cognito(stack,"Auth", {
@@ -12,7 +12,7 @@ export function Auth({ stack, app }: StackContext) {
     });
 
     auth.attachPermissionsForAuthUsers(stack, [
-        api,
+        noteapi,
         new iam.PolicyStatement({
             actions: ["s3:*"],
             effect: iam.Effect.ALLOW,

@@ -13,9 +13,9 @@ export default {
     };
   },
   stacks(app) {
+    app.stack(Storage);
     app.stack(API);
     app.stack(NoteApi);
-    app.stack(Storage);
     app.stack(Auth);
     app.stack(Frontend);
   }

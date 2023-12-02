@@ -9,14 +9,11 @@ export function Storage({ stack}: StackContext) {
         primaryIndex: {partitionKey: "userId", sortKey: "noteId"},
       });
     
-      const Users = new Table(stack, "Users", {
+      const Users = new Table(stack, "users", {
         fields: {
             userId: "string",
-            created_at: "string",
-            updated_at: "string",
-            deleted_at: "string"
         },
-        primaryIndex: {partitionKey: "userId", sortKey: "userId"},
+        primaryIndex: {partitionKey: "userId"},
       });
 
       const bucket = new Bucket(stack, "Uploads", {
