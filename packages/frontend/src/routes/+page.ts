@@ -1,6 +1,7 @@
 import type { PageLoad } from './$types';
-import { getCount } from "$lib";
+// import { getCount } from "$lib";
 
 export const load: PageLoad = async () => {
-    return await getCount();
+    return {Count: 1};
+    // return await getCount();
 };
