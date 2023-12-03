@@ -1,5 +1,6 @@
 <script lang="ts">
     import  { Amplify, Auth }  from "aws-amplify"
+    import '../app.css';
     import { onMount } from "svelte";
     import {config} from "../config";
 	import { page } from "$app/stores";
@@ -44,7 +45,7 @@
     onMount(async () => {
         const isLoggedIn = await checkLoginStatus();
         if (!isLoggedIn) {
-            if ($page.url.pathname !== '/signin' && $page.url.pathname !== '/signin') {
+            if ($page.url.pathname !== '/signin' && $page.url.pathname !== '/signup') {
                 window.location.href = '/signin';
             } 
             loggedIn.set(false);    
@@ -76,7 +77,7 @@
 
             <!-- ロゴエリア -->
             <div>
-                <img src="/logo.png" alt="SimpleNote logo" class="h-8" />
+                <!-- <img src="/logo.png" alt="SimpleNote logo" class="h-8" /> -->
                 <!-- アプリケーションのロゴを表示 -->
             </div>
 

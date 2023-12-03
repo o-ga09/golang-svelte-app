@@ -27,12 +27,12 @@
     });
 </script>
 
-<div class="App">
+<!-- <div class="App">
     {#if data.Count}<p>You Clicked me {data.Count} times.</p>{/if}
     <button on:click={onClick}>Click Me!</button>
-</div>
+</div> -->
 
-<style>
+<!-- <style>
     .App {
         text-align: center;
     }
@@ -43,4 +43,4 @@
     button {
         font-size: 48px;
     }
-</style>
+</style> -->
