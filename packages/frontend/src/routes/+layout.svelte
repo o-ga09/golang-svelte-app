@@ -15,7 +15,7 @@
             userPoolId: config.cognito.USER_POOL_ID,
             identityPoolId: config.cognito.IDENTITY_POOL_ID,
             userPoolWebClientId: config.cognito.APP_CLIENT_ID,
-            sotrage: global.sessionStorage
+            storage: global.sessionStorage
         },
         Storage: {
             region: config.S3.REGION,
